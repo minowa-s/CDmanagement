@@ -9,17 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.dao;
+import dto.Cd;
+
 /**
- * Servlet implementation class CdTopServlet
+ * Servlet implementation class quizquiz
  */
-@WebServlet("/CdTopServlet")
-public class CdTopServlet extends HttpServlet {
+@WebServlet("/successservlet")
+public class successservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CdTopServlet() {
+    public successservlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +31,31 @@ public class CdTopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	String view ="WEB-INF/view/cd-top.jsp";
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
+		request.setCharacterEncoding("UTF-8");
+		
+		String title = request.getParameter("title");
+		String composer = request.getParameter("composer");
+		String onsale = request.getParameter("onsale");
+		String isbnStr = request.getParameter("isbn");
+		
+		int isbn = Integer.parseInt(isbnStr);
+		
+	Cd cd = new Cd(title,composer,onsale,isbn);
+	
+	int result = dao.cd(cd);
+	
+	String view = "";
+	if(result == 1) {
+		 view = "WEB-INF/view/successs.jsp";
+	} else {
+		view = "WEB-INF/view/fail.jsp";
 	}
+	RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+	dispatcher.forward(request, response);
+	}
+	
+		
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

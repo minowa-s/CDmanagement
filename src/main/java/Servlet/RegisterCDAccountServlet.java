@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CdTopServlet
+ * Servlet implementation class RegisterCDAccountServlet
  */
-@WebServlet("/CdTopServlet")
-public class CdTopServlet extends HttpServlet {
+@WebServlet("/RegisterCDAccountServlet")
+public class RegisterCDAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CdTopServlet() {
+    public RegisterCDAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +28,7 @@ public class CdTopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	String view ="WEB-INF/view/cd-top.jsp";
-
+		String view = "WEB-INF/view/register-form.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
