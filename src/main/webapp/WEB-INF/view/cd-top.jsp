@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="#">CDデータ登録</a>
+<h3>管理画面</h3>
+<a href="registerservlet">CDデータ登録</a>
 <a href="SelectAllCdServlet">CD一覧</a>
 <a href="DeleteCdServlet">CDデータ削除</a>
 
